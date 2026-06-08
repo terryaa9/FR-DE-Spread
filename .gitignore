@@ -1,0 +1,22 @@
+# Environment / secrets — never commit
+.env
+*.env
+
+# Data files (regenerate by running download scripts)
+data/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/

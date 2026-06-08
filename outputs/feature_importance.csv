@@ -1,0 +1,17 @@
+feature;importance
+ttf_close;0,371
+residual_load_diff;0,340
+fr_nuclear_lag1;0,101
+month;0,049
+fr_load;0,023
+fr_nuclear_deviation;0,022
+de_residual_load;0,019
+de_wind;0,019
+fr_residual_load;0,017
+de_load;0,015
+fr_wind_forecast;0,009
+de_solar;0,006
+fr_solar_forecast;0,003
+hour;0,003
+is_weekend;0,001
+is_peak;0,000

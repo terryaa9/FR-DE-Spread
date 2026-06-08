@@ -1,0 +1,9 @@
+regime;avg_spread;std_spread;mae;r2;n_hours;top_driver;top_driver_importance
+Gas Price: high_gas;-7,482;33,839;18,632;0,054;1221,000;residual_load_diff;0,388
+Gas Price: low_gas;-24,130;45,820;19,556;0,140;3312,000;residual_load_diff;0,417
+DE Wind: high_wind;-5,729;25,714;14,611;0,273;2123,000;ttf_close;0,471
+DE Wind: low_wind;-31,905;51,620;24,913;-0,033;2410,000;ttf_close;0,321
+FR Nuclear: high_nuclear;-20,017;45,406;21,291;0,077;3884,000;residual_load_diff;0,461
+FR Nuclear: low_nuclear;-17,427;30,084;14,305;0,525;649,000;residual_load_diff;0,511
+Peak/Off-Peak: peak;-20,947;52,497;24,089;0,043;2457,000;ttf_close;0,416
+Peak/Off-Peak: off_peak;-18,106;29,599;16,570;0,260;2076,000;ttf_close;0,354
