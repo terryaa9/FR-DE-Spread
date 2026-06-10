@@ -1,0 +1,9 @@
+# Pinned for reproducibility — model outputs (esp. full-precision CSVs)
+# drift slightly across scikit-learn versions.
+pandas==3.0.0
+numpy==2.4.1
+scikit-learn==1.8.0
+matplotlib==3.10.8
+yfinance==1.2.0
+entsoe-py==0.7.10
+python-dotenv==1.2.2

@@ -21,6 +21,10 @@ import sys
 import os
 import time
 
+# All paths in the pipeline are relative to the repo root, so make that the
+# working directory no matter where this script is invoked from.
+os.chdir(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 # ============================================================
 # PIPELINE DEFINITION
 # ============================================================

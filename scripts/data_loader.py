@@ -122,8 +122,17 @@ df = pd.concat([
     de_data[['de_load', 'de_wind', 'de_solar']],
 ], axis=1, join='inner')
 
-# TTF is daily — forward-fill so each day's price covers all 24 hours.
-ttf_hourly = ttf.reindex(df.index, method='ffill')
+# TTF is daily and the stored value is the END-OF-DAY settlement (Close).
+# The FR/DE day-ahead auction for delivery day D clears at ~12:00 CET on D-1,
+# so day D's own close does NOT exist at auction time. Using it would leak
+# ~12-36h of future information into the model's single most important feature.
+# Lag by one day: delivery day D uses the previous day's settled close.
+# (Residual nuance: D-1's close settles ~18:00 CET, a few hours after the
+# noon auction. A two-day lag removes this entirely and leaves test R²
+# essentially unchanged — 0.127 vs 0.129 — see NOTES.md limitations.)
+ttf_lagged = ttf.copy()
+ttf_lagged.index = ttf_lagged.index + pd.Timedelta(days=1)
+ttf_hourly = ttf_lagged.reindex(df.index, method='ffill')
 df['ttf_close'] = ttf_hourly['ttf_close']
 
 print(f"\nMerged dataset: {df.shape[0]} rows x {df.shape[1]} columns")
@@ -138,7 +147,9 @@ print(f"Columns: {list(df.columns)}")
 print(f"\nMissing values:")
 print(df.isnull().sum())
 
-df = df.interpolate(method='linear', limit=3)
+# Forward-fill only (causal). Linear interpolation would borrow from FUTURE
+# rows to fill a gap, which is a look-ahead leak on the filled timestamps.
+df = df.ffill(limit=3)
 rows_before = len(df)
 df = df.dropna()
 rows_after = len(df)

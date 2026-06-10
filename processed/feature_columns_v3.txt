@@ -4,7 +4,7 @@ de_residual_load
 fr_load
 de_load
 ttf_close
-fr_nuclear_lag1
+fr_nuclear_prevday
 fr_nuclear_deviation
 fr_wind_forecast
 fr_solar_forecast
